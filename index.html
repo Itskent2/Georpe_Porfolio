@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    <!-- Background Audio -->
+    <audio id="bgm" src="assets/audio/Superman • Main Theme • John Williams.mp3" loop preload="auto"></audio>
+
     <div id="start-screen">
         <div class="terminal-box">
             <div class="terminal-header">
@@ -18,7 +21,6 @@
             <div class="intro-grid">
                 <div class="portrait-container">
                     <div class="crt-glitch-overlay"></div>
-                    <!-- Ensure clark.jpeg is in assets/sprites/ -->
                     <img src="assets/sprites/Clark.png" alt="Clark Kent Portrait" id="hero-face">
                     <div class="portrait-caption">SUBJECT: C. KENT</div>
                 </div>
@@ -58,7 +60,42 @@
     <script src="js/main.js"></script>
 
     <script>
+        const bgm = document.getElementById('bgm');
+        bgm.volume = 0.5;
+
+        let hasAttemptedPlay = false;
+
+        function startBgm() {
+            if (bgm.paused) {
+                bgm.play().then(() => {
+                    window.removeEventListener('click', userInteractPlay);
+                    window.removeEventListener('keydown', userInteractPlay);
+                }).catch(() => {
+                    // Browser prevented unmuted autoplay; will play on first click/key
+                });
+            }
+        }
+
+        // Wait 3 seconds after the window loads before triggering the music
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                hasAttemptedPlay = true;
+                startBgm();
+            }, 3000);
+        });
+
+        // Fallback: If autoplay is restricted by browser policy, play upon first gesture
+        function userInteractPlay() {
+            if (hasAttemptedPlay) {
+                startBgm();
+            }
+        }
+        window.addEventListener('click', userInteractPlay);
+        window.addEventListener('keydown', userInteractPlay);
+
+        // Start button transition
         document.getElementById('start-btn').addEventListener('click', () => {
+            startBgm();
             document.getElementById('start-screen').style.display = 'none';
             document.getElementById('game-container').style.display = 'block';
             if (typeof startGame === "function") startGame();
