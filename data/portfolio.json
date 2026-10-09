@@ -1,0 +1,24 @@
+{
+    "storyline": [
+        {
+            "trigger": 1,
+            "text": "Hello, I am Clark Kent Georpe. I hold a B.S. in Computer Engineering from Cebu Technological University."
+        },
+        {
+            "trigger": 2,
+            "text": "My foundations are reinforced by TESDA certifications in Data Analytics, Java, IoT, and Web Design."
+        },
+        {
+            "trigger": 3,
+            "text": "I engineer software. I build cross-platform mobile apps with Flutter, Dart, and Riverpod."
+        },
+        {
+            "trigger": 4,
+            "text": "I forge physical hardware. I design single-sided PCBs in KiCad and fabricate them via CNC."
+        },
+        {
+            "trigger": 5,
+            "text": "My greatest feat is my thesis, Project AGRI-3D: integrating Edge Impulse TinyML image annotation for weed detection with an automated Cartesian gantry."
+        }
+    ]
+}

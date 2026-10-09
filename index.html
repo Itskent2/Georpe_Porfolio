@@ -4,13 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clark Kent Georpe</title>
-    <h1>halloo everybody ako si clark kent geor
-    </h1>
+    <title>Clark Kent Georpe - Portfolio Arcade</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@4.0.0/dist/phaser.min.js"></script>
 </head>
 
 <body>
+    <div id="start-screen">
+        <div class="terminal-box">
+            <div class="terminal-header">
+                <span class="pulse-dot"></span> SECURE TRANSMISSION RECEIVED
+            </div>
+            <div class="intro-grid">
+                <div class="portrait-container">
+                    <div class="crt-glitch-overlay"></div>
+                    <!-- Ensure clark.jpeg is in assets/sprites/ -->
+                    <img src="assets/sprites/Clark.png" alt="Clark Kent Portrait" id="hero-face">
+                    <div class="portrait-caption">SUBJECT: C. KENT</div>
+                </div>
+                <div class="terminal-content">
+                    <h1>SUBJECT: CLARK KENT GEORPE</h1>
+                    <p class="typewriter-1">ORIGIN: Forged in Dumanjug, Cebu</p>
+                    <p class="typewriter-2">TRAINING: B.S. Computer Engineering, CTU Main Campus</p>
+                    <button id="start-btn" class="blink-text">[ PRESS START TO BEGIN JOURNEY ]</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div id="game-container" style="display: none;"></div>
+
+    <div id="contact-screen" style="display: none;">
+        <h2>Ready to build the future?</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Mission Details..." required></textarea>
+            <button type="submit">Send Signal</button>
+        </form>
+    </div>
+
+    <!-- Entity Layer -->
+    <script src="js/entities/HeatVision.js"></script>
+    <script src="js/entities/DroneTarget.js"></script>
+    <script src="js/entities/Player.js"></script>
+
+    <!-- Scene Layer -->
+    <script src="js/scenes/PreloadScene.js"></script>
+    <script src="js/scenes/UIScene.js"></script>
+    <script src="js/scenes/Level1Scene.js"></script>
+
+    <!-- Core Engine -->
+    <script src="js/main.js"></script>
+
+    <script>
+        document.getElementById('start-btn').addEventListener('click', () => {
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('game-container').style.display = 'block';
+            if (typeof startGame === "function") startGame();
+        });
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,242 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #050814;
+    color: #00e5ff;
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+body::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 3px, 4px 100%;
+    pointer-events: none;
+}
+
+#start-screen,
+#contact-screen {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* WIDE & LARGE TERMINAL BOX */
+.terminal-box {
+    border: 3px solid #00e5ff;
+    padding: 50px 60px;
+    background-color: rgba(0, 20, 40, 0.95);
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.35), inset 0 0 25px rgba(0, 229, 255, 0.15);
+    width: 88vw;
+    max-width: 1300px;
+    box-sizing: border-box;
+}
+
+.terminal-header {
+    background-color: rgba(0, 229, 255, 0.15);
+    color: #00e5ff;
+    font-size: 16px;
+    padding: 10px 16px;
+    border-bottom: 2px solid #00e5ff;
+    margin-bottom: 35px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    letter-spacing: 2px;
+}
+
+.pulse-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    margin-right: 12px;
+    box-shadow: 0 0 8px #ff0000;
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.intro-grid {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+/* EXPANDED PORTRAIT CONTAINER */
+.portrait-container {
+    position: relative;
+    border: 4px double #00e5ff;
+    background: #010c1e;
+    padding: 6px;
+    width: 280px;
+    height: 280px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
+}
+
+#hero-face {
+    width: 100%;
+    height: calc(100% - 24px);
+    object-fit: cover;
+    image-rendering: pixelated;
+    border-bottom: 2px solid rgba(0, 229, 255, 0.5);
+}
+
+.portrait-caption {
+    font-size: 13px;
+    color: #ffcc00;
+    letter-spacing: 2px;
+    padding-top: 6px;
+    font-weight: bold;
+}
+
+.crt-glitch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 229, 255, 0.12) 50%);
+    background-size: 100% 6px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* EXPANDED TEXT CONTENT */
+.terminal-content {
+    flex: 1;
+}
+
+h1 {
+    color: #ffcc00;
+    text-shadow: 3px 3px #d50000;
+    font-size: 36px;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.typewriter-1,
+.typewriter-2 {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid transparent;
+    font-size: 22px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    width: 0;
+}
+
+.typewriter-1 {
+    animation: typing 2s steps(40, end) forwards;
+}
+
+.typewriter-2 {
+    animation: typing 2.5s steps(50, end) 2s forwards;
+}
+
+@keyframes typing {
+    to {
+        width: 100%;
+    }
+}
+
+#start-btn {
+    background: transparent;
+    border: none;
+    color: #ffcc00;
+    font-family: inherit;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 35px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    letter-spacing: 2px;
+}
+
+.blink-text {
+    opacity: 0;
+    animation: blinker 1.2s linear infinite forwards;
+    animation-delay: 4.5s;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#start-btn:hover {
+    color: #fff;
+    text-shadow: 0 0 15px #ffcc00;
+}
+
+/* EXPANDED CONTACT FORM */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 550px;
+    max-width: 90vw;
+}
+
+#contact-form input,
+#contact-form textarea {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #00e5ff;
+    color: #00e5ff;
+    padding: 14px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+#contact-form button {
+    background: #d50000;
+    color: white;
+    border: 2px solid #ffcc00;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#contact-form button:hover {
+    background: #ffcc00;
+    color: #d50000;
+}
